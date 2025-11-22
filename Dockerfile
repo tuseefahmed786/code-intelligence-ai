@@ -3,10 +3,9 @@ FROM node:20-alpine
 WORKDIR /app
 
 COPY backend/package.json ./
-COPY backend/package-lock.json ./
 COPY backend/tsconfig.json ./
 
-RUN npm ci || npm install
+RUN npm install
 
 COPY backend/src ./src
 
