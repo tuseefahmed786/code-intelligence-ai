@@ -93,14 +93,14 @@ router.post('/github', async (req: Request, res: Response) => {
 
     await postPRComment(repo, prNumber, analysisResult);
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: 'PR analyzed and comment posted',
       data: analysisResult,
     });
   } catch (error) {
     console.error('Webhook error:', error);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       error: error instanceof Error ? error.message : 'Failed to process webhook',
     });

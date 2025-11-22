@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/health', (req: Request, res: Response) => {
+app.get('/health', (_req: Request, res: Response) => {
   res.json({
     status: 'ok',
     timestamp: new Date().toISOString(),
@@ -23,7 +23,7 @@ app.use('/api/documentation', analysisRoutes);
 app.use('/api/tests', analysisRoutes);
 app.use('/api/webhooks', webhookRoutes);
 
-app.get('/', (req: Request, res: Response) => {
+app.get('/', (_req: Request, res: Response) => {
   res.json({
     message: 'Code Intelligence AI - PR Review Service',
     version: '1.0.0',
@@ -37,7 +37,7 @@ app.get('/', (req: Request, res: Response) => {
   });
 });
 
-app.use((err: Error, req: Request, res: Response, next: express.NextFunction) => {
+app.use((err: Error, _req: Request, res: Response, _next: express.NextFunction) => {
   console.error('Unhandled error:', err);
   res.status(500).json({
     success: false,

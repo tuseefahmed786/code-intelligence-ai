@@ -3,7 +3,6 @@ import { codeAnalyzer } from '../services/codeAnalyzer';
 import { openAIService } from '../services/openaiService';
 import { githubService } from '../services/githubService';
 import * as fs from 'fs/promises';
-import * as path from 'path';
 import { z } from 'zod';
 
 const router = Router();
@@ -47,7 +46,7 @@ router.post('/code', async (req: Request, res: Response) => {
       body.context
     );
 
-    res.json({
+    return res.json({
       success: true,
       data: result,
     });
@@ -61,7 +60,7 @@ router.post('/code', async (req: Request, res: Response) => {
     }
 
     console.error('Error analyzing code:', error);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       error: error instanceof Error ? error.message : 'Failed to analyze code',
     });
@@ -92,7 +91,7 @@ router.post('/codebase', async (req: Request, res: Response) => {
       maxFiles: body.maxFiles,
     });
 
-    res.json({
+    return res.json({
       success: true,
       data: result,
     });
@@ -106,7 +105,7 @@ router.post('/codebase', async (req: Request, res: Response) => {
     }
 
     console.error('Error analyzing codebase:', error);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       error: error instanceof Error ? error.message : 'Failed to analyze codebase',
     });
@@ -136,13 +135,13 @@ router.post('/architecture', async (req: Request, res: Response) => {
       files[0]?.language || 'javascript'
     );
 
-    res.json({
+    return res.json({
       success: true,
       data: result,
     });
   } catch (error) {
     console.error('Error analyzing architecture:', error);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       error: error instanceof Error ? error.message : 'Failed to analyze architecture',
     });
@@ -159,7 +158,7 @@ router.post('/documentation/generate', async (req: Request, res: Response) => {
       body.filePath
     );
 
-    res.json({
+    return res.json({
       success: true,
       data: result,
     });
@@ -173,7 +172,7 @@ router.post('/documentation/generate', async (req: Request, res: Response) => {
     }
 
     console.error('Error generating documentation:', error);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       error: error instanceof Error ? error.message : 'Failed to generate documentation',
     });
@@ -190,7 +189,7 @@ router.post('/tests/generate', async (req: Request, res: Response) => {
       body.framework
     );
 
-    res.json({
+    return res.json({
       success: true,
       data: result,
     });
@@ -204,7 +203,7 @@ router.post('/tests/generate', async (req: Request, res: Response) => {
     }
 
     console.error('Error generating tests:', error);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       error: error instanceof Error ? error.message : 'Failed to generate tests',
     });
@@ -279,7 +278,7 @@ router.post('/pr', async (req: Request, res: Response) => {
       ? fileAnalyses.reduce((sum, f) => sum + f.qualityScore, 0) / fileAnalyses.length
       : 0;
 
-    res.json({
+    return res.json({
       success: true,
       data: {
         pr: {
@@ -308,7 +307,7 @@ router.post('/pr', async (req: Request, res: Response) => {
     }
 
     console.error('Error analyzing PR:', error);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       error: error instanceof Error ? error.message : 'Failed to analyze PR',
     });
