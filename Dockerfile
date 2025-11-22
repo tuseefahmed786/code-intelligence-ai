@@ -3,10 +3,10 @@ FROM node:20-alpine
 WORKDIR /app
 
 COPY backend/package.json ./
-COPY backend/package-lock.json ./
+COPY backend/package-lock.json* ./
 COPY backend/tsconfig.json ./
 
-RUN npm ci || npm install
+RUN if [ -f package-lock.json ]; then npm ci; else npm install; fi
 
 COPY backend/src ./src
 
