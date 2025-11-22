@@ -1,0 +1,30 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Copy package files
+COPY backend/package*.json ./
+COPY backend/tsconfig.json ./
+
+# Install ALL dependencies (including dev for build)
+RUN npm ci
+
+# Copy source code
+COPY backend/src ./src
+
+# Build TypeScript
+RUN npm run build
+
+# Remove dev dependencies (keep only production)
+RUN npm prune --production
+
+# Expose port
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3000/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"
+
+# Start server
+CMD ["node", "dist/index.js"]
+
