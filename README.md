@@ -12,24 +12,44 @@
 - ✅ Provides quality scores and improvement suggestions
 
 ---
+## GitHub Webhook Setup
 
-### Your Webhook URL
+To enable automated integrations and notifications for your project, you can add a webhook to your GitHub repository.
 
-Add this link to your project repo
+### Step-by-Step Guide
+
+1. **Navigate to your repository on GitHub**
+   - Go to your repository's main page on GitHub
+
+2. **Access Webhook Settings**
+   - Click on **Settings** (located in the repository navigation bar)
+   - In the left sidebar, click on **Webhooks**
+   - Click the **Add webhook** button
+
+3. **Configure the Webhook**
+   - **Payload URL**: Enter the following URL:
+     ```
+     https://code-intelligence-ai-production.up.railway.app/api/webhooks/github
+     ```
+   - **Content type**: Select `application/json`
+   - **Which events would you like to trigger this webhook?**: 
+     - Choose **"Let me select individual events"** and select the events you want to trigger (e.g., `push`, `pull_request`, `issues`, etc.)
+   - **Active**: Make sure the checkbox is checked
+
+4. **Save the Webhook**
+   - Click **Add webhook** to save your configuration
+
+5. **Verify Setup**
+   - **To verify the webhook is working properly**: Create a Pull Request (PR) in your repository
+   - Once the PR is created, you will see comments from the webhook service on your PR, confirming that the webhook is active and functioning correctly
+
+### Webhook URL
+
 ```
 https://code-intelligence-ai-production.up.railway.app/api/webhooks/github
 ```
 
----
-
-## 📝 How Users Connect
-
-Users add your webhook URL to their GitHub repos:
-
-1. Go to repo → **Settings** → **Webhooks**
-2. Add webhook: `https://your-service-url.com/api/webhooks/github`
-3. Select **"Pull requests"** events
-4. **Done!** Every PR gets automatic AI review
+> **Note**: Make sure you have the necessary permissions to add webhooks to the repository. Repository admin access is typically required.
 
 
 ## ✅ Features
