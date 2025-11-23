@@ -23,10 +23,11 @@ To enable automated integrations and notifications for your project, you can add
 
 2. **Access Webhook Settings**
    - Click on **Settings** (located in the repository navigation bar)
+     <img width="888" height="159" alt="Screenshot 2025-11-23 at 10 48 19 PM" src="https://github.com/user-attachments/assets/39ea4b98-fc63-44ab-bb9f-a1cbd0789eef" />
    - In the left sidebar, click on **Webhooks**
    - Click the **Add webhook** button
 
-3. **Configure the Webhook**
+4. **Configure the Webhook**
    - **Payload URL**: Enter the following URL:
      ```
      https://code-intelligence-ai-production.up.railway.app/api/webhooks/github
@@ -36,10 +37,10 @@ To enable automated integrations and notifications for your project, you can add
      - Choose **"Let me select individual events"** and select the events you want to trigger (e.g., `push`, `pull_request`, `issues`, etc.)
    - **Active**: Make sure the checkbox is checked
 
-4. **Save the Webhook**
+5. **Save the Webhook**
    - Click **Add webhook** to save your configuration
 
-5. **Verify Setup**
+6. **Verify Setup**
    - **To verify the webhook is working properly**: Create a Pull Request (PR) in your repository
    - Once the PR is created, you will see comments from the webhook service on your PR, confirming that the webhook is active and functioning correctly
 
