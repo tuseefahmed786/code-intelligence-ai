@@ -23,9 +23,7 @@ To enable automated integrations and notifications for your project, you can add
 
 2. **Access Webhook Settings**
    - Click on **Settings** (located in the repository navigation bar)
-     <img width="888" height="159" alt="Screenshot 2025-11-23 at 10 48 19 PM" src="https://github.com/user-attachments/assets/39ea4b98-fc63-44ab-bb9f-a1cbd0789eef" />
    - In the left sidebar, click on **Webhooks**
-   - <img width="339" height="740" alt="Screenshot 2025-11-23 at 10 54 13 PM" src="https://github.com/user-attachments/assets/e9ebd9ae-a6de-41e3-a5fb-d3b19e2b6708" />
    - Click the **Add webhook** button
 
 4. **Configure the Webhook**
