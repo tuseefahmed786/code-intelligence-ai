@@ -1,6 +1,6 @@
 # 🤖 Code Intelligence AI - PR Review Service
 
-**Automatically review GitHub Pull Requests with AI** - Just like CodeRabbit, but open-source!
+**Automatically review GitHub Pull Requests with AI**
 
 ---
 
@@ -14,9 +14,9 @@
 ---
 ## GitHub Webhook Setup
 
-To enable automated integrations and notifications for your project, you can add a webhook to your GitHub repository.
+To enable automatic AI-powered PR reviews for your repository, add a webhook to your GitHub repository. This will automatically analyze every Pull Request and post detailed code review comments with quality scores, security issues, and improvement suggestions.
 
-### Step-by-Step Guide
+### Step-by-Step Guide Install
 
 1. **Navigate to your repository on GitHub**
    - Go to your repository's main page on GitHub
