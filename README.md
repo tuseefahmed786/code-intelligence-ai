@@ -1,4 +1,4 @@
-# 🤖 Code Intelligence AI - PR Review Service
+# Code Intelligence AI - PR Review Service
 
 **Automatically review GitHub Pull Requests with AI**
 
